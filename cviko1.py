@@ -46,10 +46,10 @@ def collatz_plot(n):
     else:
       n = 3*n+1
   plt.plot(list_x, list_y)
-  plt.savefig('./collatz/img_'+str(name)+'.png', bbox_inches='tight')
+  #plt.savefig('./collatz/img_'+str(name)+'.png', bbox_inches='tight')
   if (name == 100) or (name == 150) or (name==200) or (name == 250) or (name == 300) or (name==350):
     plt.close()
-  #plt.show()
+  plt.show()
 
 def collatz_steps(n):
   list_x = []
@@ -103,8 +103,8 @@ def ulam_spiral(k):
 	y -= 1
       count += 1
       pixels[x,y] = color_pixel(count,k)
-  im.save('./ulam/img_'+str(k)+'.png','png')
-  #im.show()
+  #im.save('./ulam/img_'+str(k)+'.png','png')
+  im.show()
   
   
 def nsd(a,b):
@@ -127,8 +127,8 @@ def nsd_range(seed):
 #img1(800)
 #colors()
 #ulam_spiral(100)
-for i in range(2,400):
-  collatz_plot(i)
-#collatz_steps(8000)
 #for i in range(2,400):
-    #ulam_spiral(i)
+#  collatz_plot(i)
+#collatz_steps(8000)
+for i in range(2,400):
+    ulam_spiral(i)

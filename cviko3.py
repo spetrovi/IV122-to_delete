@@ -31,19 +31,25 @@ def tree(length, min_length=1):
         left(45)
     back(length)
 
-def kochflake(length, levels):
+
+def kochside(length, levels):
     if levels == 0:
         forward(length)
         return
     length /= 3.0
-    kochflake(length, levels-1)
+    kochside(length, levels-1)
     left(60)
-    kochflake(length, levels-1)
+    kochside(length, levels-1)
     right(120)
-    kochflake(length, levels-1)
+    kochside(length, levels-1)
     left(60)
-    kochflake(length, levels-1)
-	
+    kochside(length, levels-1)
+
+def kochflake(level):
+	for i in range(3):
+        	kochside(100*level, level)
+        	right(120)
+
 def sier(length, level):
     if level == 1:
         for i in range(3):
@@ -61,56 +67,56 @@ def sier(length, level):
         left(60)
         back(length/2)
         right(60)
-	
-def pentaflake(length,level):
+
+
+def pent_side(length,level):
 	if level == 0:
-		pentagon(length)
-		return
-	length /= 3
-	angle = 216
-	pentaflake(length,level-1)
-	right(angle)
-	pentaflake(length,level-1)
-	right(angle)
-	pentaflake(length,level-1)
-	right(angle)
-	pentaflake(length,level-1)
-	right(angle)
-	pentaflake(length,level-1)
-	
-	penup()
+        	forward(length/5)
+        	return
+	length /= 5
+	pent_side(length,level-1)
 	right(72)
-	forward(length*4.25*(1/level))
+	pent_side(length,level-1)
+
+	left(36)
+	pent_side(length,level-1)
+	penup()
+	left(180)
+	pent_side(length,level-1)
+	right(180)
 	pendown()
 	
-    
+	#department of redundancy department
+	right(144-36)
+	pent_side(length,level-1)
+	penup()
+	left(180)
+	pent_side(length,level-1)
+	right(180)
+	pendown()
+	left(144-36)
+	
+	left(144-36)
+	pent_side(length,level-1)
+	right(72)
+	pent_side(length,level-1)
+
+def pentaflake(level):
+	for i in range(5):
+		pent_side(1000*level,level)
+		right(72)
+
+	
+
 turtle.speed(0)
-#left(90)
+left(90)
 tree(50)
 
-#for i in range(3):
-        #kochflake(300, 4)
-        #right(120)
-#sier(300,8)
-
-# uhol v 5uholniku je 108
-#def pentagon(length):
-	#for i in range(0,4):
-		#forward(length)
-		#left(72)
-	#forward(length)
-	#back(length)
-turtle.speed(0)
-#pentaflake(300,3)
-
-
-
-
-
-
-
-
-
+penup()
+back(200)
+pendown()
+pentaflake(3)
+kochflake(4)
 
 turtle.exitonclick()
 
